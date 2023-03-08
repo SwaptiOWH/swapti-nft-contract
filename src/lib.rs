@@ -300,9 +300,9 @@ impl Contract {
                 env::panic_str("Solo el creador de la solicitud puede finalizarla");
             }
 
-            // if request_data.status == RequestStatus::Open || request_data.status == RequestStatus::Complete {
-            //     env::panic_str("La solicitud aún no es atendida o ya finalizó");
-            // }
+            if request_data.status == RequestStatus::Open || request_data.status == RequestStatus::Complete {
+                env::panic_str("La solicitud aún no es atendida o ya finalizó");
+            }
 
             let new_request = Request {
                 request_id: request_id,
